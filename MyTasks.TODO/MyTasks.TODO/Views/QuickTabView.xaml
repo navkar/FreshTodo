@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             x:Class="MyTasks.TODO.Views.QuickTabView">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Tab 1">
+        <StackLayout>
+            <Label FontSize="Large" HorizontalTextAlignment="Center" Text="First page gets added as a detail page" />
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Tab 2">
+        <StackLayout>
+            <Label FontSize="Large" HorizontalTextAlignment="Center" Text="Tab 2" />
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Tab 3">
+        <StackLayout>
+            <Label FontSize="Large" HorizontalTextAlignment="Center" Text="Tab 3" />
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>
