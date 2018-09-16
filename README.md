@@ -1,4 +1,14 @@
-# TODO-APP slide out menu using Fresh MVVM sample
+## TODO-APP navigation drawer menu using FreshMVVM sample
+
+This app uses the following NUGETS
+
+* Acr.UserDialogs
+* Fody.PropertyChanged
+* Fusillade
+* Polly
+* ModerHttpClient
+* Plugin.Connectivity
+* Refit
 
 ## Screenshots 
 | Navigation Drawer | Single Page |
