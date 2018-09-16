@@ -24,10 +24,12 @@ namespace MyTasks.TODO.ViewModels
 
         private void Login()
         {
-            if (Username == "nav" && Password == "pass")
-                CoreMethods.SwitchOutRootNavigation(NavigationStacks.MainNavStack);
-            else
-                CoreMethods.DisplayAlert("Login", "Invalid username or password", "Okay");
+            CoreMethods.SwitchOutRootNavigation(NavigationStacks.MainNavStack);
+
+            //if (Username == "nav" && Password == "pass")
+            //    CoreMethods.SwitchOutRootNavigation(NavigationStacks.MainNavStack);
+            //else
+            //    CoreMethods.DisplayAlert("Login", "Invalid username or password", "Okay");
         }
 
     }

@@ -133,13 +133,14 @@ namespace MyTasks.TODO.Helpers
                         switch (tabGroupIndex)
                         {
                             case 1:
-                                tabbedNavigationPage.AddTab<ContactListViewModel>("Contacts", "Icon.png");
-                                tabbedNavigationPage.AddTab<BlankViewModel>("Contacts2", "Icon.png");
-                                tabbedNavigationPage.AddTab<BlankViewModel>("Contacts3", "Icon.png");
+                                tabbedNavigationPage.AddTab<ContactListViewModel>("Contacts 1", "Icon.png");
+                                tabbedNavigationPage.AddTab<BlankViewModel>("Contacts 2", "Icon.png");
+                                tabbedNavigationPage.AddTab<BlankViewModel>("Contacts 3", "Icon.png");
                                 Detail = tabbedNavigationPage;
                                 break;
                             case 2:
-                                tabbedNavigationPage.AddTab<TabViewModel>("JustTab", "Icon.png");
+                                tabbedNavigationPage.AddTab<TabViewModel>("Tab 1", "Icon.png");
+                                tabbedNavigationPage.AddTab<BlankViewModel>("Tab 2", "Icon.png");
                                 Detail = tabbedNavigationPage;
                                 break;
 

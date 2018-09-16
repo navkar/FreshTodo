@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"                 
+             x:Class="MyTasks.TODO.Views.ToDoListView"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="+" Command="{Binding AddToDoItem}" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>    
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ToDoItemsListView" SeparatorVisibility="Default" RowHeight="100" HasUnevenRows="True"
+                ItemTapped="ToDoItemsListView_OnItemTapped"
+                ItemSelected="ToDoItemsListView_OnItemSelected"
+                IsPullToRefreshEnabled="false"                      
+                ItemsSource="{Binding ToDoItems}" SelectedItem="{Binding SelectedTodoItem}" >
+                <ListView.Header>
+                    <StackLayout BackgroundColor="White">
+                        <BoxView BackgroundColor="Transparent" HeightRequest="1" />
+                        <Label FontSize="Large" FontAttributes="Bold" Text="Organization Name" TextColor="{StaticResource DetailTextColor}" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <Grid Padding="0,10,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                            <ffimageloading:CachedImage Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"
+                                LoadingPlaceholder="Icon.png" ErrorPlaceholder="Icon.png" DownsampleToViewSize="true"
+                                Aspect="AspectFill" HeightRequest="200" WidthRequest="200" Source="todo.png">
+                                <ffimageloading:CachedImage.Transformations>
+                                    <fftransformations:CircleTransformation/>
+                                </ffimageloading:CachedImage.Transformations>
+                            </ffimageloading:CachedImage>
+                                <Label Grid.Row="1" Text="Naveen Kar" FontSize="Large" TextColor="{StaticResource DetailTextColor}" HorizontalTextAlignment="Center" />
+                                <Label Grid.Row="2" Text="test@gmail.com" FontSize="Small" TextColor="{StaticResource DetailTextColor}" HorizontalTextAlignment="Center" />
+                            </Grid>
+                        </StackLayout>
+                        <BoxView BackgroundColor="Transparent" HeightRequest="1" />
+                        <StackLayout Padding="5,0,0,0">
+                            <Label FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Start" Text="{Binding ItemCount, StringFormat='ITEMS ({0})'}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Grid Padding="{DynamicResource MediumPadding}" ColumnSpacing="{StaticResource MediumSpacing}"
+                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <!-- Image View -->
+                                    <ffimageloading:CachedImage Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" 
+                HeightRequest="50" DownsampleToViewSize="true" Source="todo_item.jpg" LoadingPlaceholder="Icon.png">
+                                        <ffimageloading:CachedImage.Transformations>
+                                            <fftransformations:CircleTransformation BorderSize="20" BorderHexColor="#C0C0C0"  />
+                                        </ffimageloading:CachedImage.Transformations>
+                                    </ffimageloading:CachedImage>
+                                    <!-- Details Grid -->
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Spacing="0">
+                                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="5" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" LineBreakMode="TailTruncation" FontSize="Medium" />
+                                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Text}" HorizontalOptions="FillAndExpand" FontSize="Medium" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" LineBreakMode="WordWrap" />
+                                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding CreatedOn}" VerticalTextAlignment="End" FontAttributes="Bold" HorizontalTextAlignment="End" FontSize="Micro" TextColor="Silver" />
+                                        </Grid>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

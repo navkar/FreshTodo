@@ -1,13 +1,8 @@
-﻿using System;
-
+﻿
+using Acr.UserDialogs;
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using FFImageLoading.Forms.Droid;
-using MyTasks.TODO;
 
 namespace MyTasks.TODO.Droid
 {
@@ -19,6 +14,7 @@ namespace MyTasks.TODO.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            UserDialogs.Init(this);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             base.OnCreate(bundle);
 
