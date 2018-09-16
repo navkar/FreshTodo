@@ -26,19 +26,11 @@ namespace MyTasks.TODO
 
             var masterDetailNav = new MasterDetailNavigationContainer(NavigationStacks.MainNavStack);
             masterDetailNav.Init("Menu", "ic_toolbar_Bars");
-            masterDetailNav.AddPage<BlankViewModel>("Dashboard", "Dashboard", '\uf200'.ToString(), null); // piechart icon
-            masterDetailNav.AddPage<QuickTabViewModel>("Quick Tabs", "Items", '\uf192'.ToString(), null); // target icon
-            masterDetailNav.AddPage<ContactListViewModel>("Contacts", "Items", '\uf192'.ToString(), null); // target icon
-            masterDetailNav.AddPage<AboutViewModel>("About", "Settings", '\uf129'.ToString(), null); // info icon
-            masterDetailNav.AddPage<TabViewModel>("Tab", "Settings", '\uf007'.ToString(), null); // user icon
-
-            //push a tabbed page Modally
-                //var tabbedNavigation = new FreshTabbedNavigationContainer(NavigationStacks.TabNavStack);
-                //tabbedNavigation.AddTab<ContactListViewModel>("Contacts", "contacts.png", null);
-                //tabbedNavigation.AddTab<BlankViewModel>("Quotes", "document.png", null);
-
-                //masterDetailNav.Detail = new NavigationPage(new TabView());
-
+            masterDetailNav.AddPage<BlankViewModel>("Dashboard", "Dashboard", '\uf200'.ToString()); // piechart icon
+            masterDetailNav.AddPage<QuickTabViewModel>("Quick Tabs", "Items", '\uf192'.ToString()); // target icon
+            masterDetailNav.AddPage<ContactListViewModel>("Contacts", "Items", '\uf192'.ToString(), 1); // target icon
+            masterDetailNav.AddPage<AboutViewModel>("About", "Settings", '\uf129'.ToString()); // info icon
+            masterDetailNav.AddPage<TabViewModel>("Tab", "Settings", '\uf007'.ToString(), 2); // user icon
             MainPage = loginStack;
         }
 
@@ -60,7 +52,6 @@ namespace MyTasks.TODO
         {
             public static string LoginNavStack = "LoginNavStack";
             public static string MainNavStack = "MainNavStack";
-            public static string TabNavStack = "TabNavStack";
         }
     }
 }

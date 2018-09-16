@@ -18,6 +18,7 @@ namespace MyTasks.TODO.Helpers
         public Type ViewModelType { get; set; }
         public object Data { get; set; }
         public string Group { get; internal set; }
+        public int TabGroupIndex { get; set; }
     }
 
     public class Grouping<K, T> : List<T>
@@ -61,9 +62,17 @@ namespace MyTasks.TODO.Helpers
             FreshIOC.Container.Register<IFreshNavigationService>(this, NavigationServiceName);
         }
 
-        public virtual void AddPage<T>(string title, string group, string icon = null, object data = null) where T : FreshBasePageModel
+        public virtual void AddPage<T>(string title, string group, string icon = null, int tabGroupIndex = 0, object data = null) where T : FreshBasePageModel
         {
-            var pageToAdd = new LazyLoadedPage { ViewModelType = typeof(T), Data = data, Title = title, Icon = icon, Group = group };
+            var pageToAdd = new LazyLoadedPage
+            {
+                ViewModelType = typeof(T),
+                Data = data,
+                Title = title,
+                Icon = icon,
+                Group = group,
+                TabGroupIndex = tabGroupIndex
+            };
 
             Pages.Add(pageToAdd);
 
@@ -109,12 +118,33 @@ namespace MyTasks.TODO.Helpers
 
                 if (Pages.Contains(lazyLoadedPage))
                 {
-                    var page = lazyLoadedPage.Page;
+                    Page page = lazyLoadedPage.Page;
+                    int tabGroupIndex = lazyLoadedPage.TabGroupIndex;
 
                     if (page == null)
                         page = ResolvePage(lazyLoadedPage);
 
                     Detail = page;
+
+                    if (tabGroupIndex > 0)
+                    {
+                        var tabbedNavigationPage = new FreshTabbedNavigationContainer();
+
+                        switch (tabGroupIndex)
+                        {
+                            case 1:
+                                tabbedNavigationPage.AddTab<ContactListViewModel>("Contacts", "Icon.png");
+                                tabbedNavigationPage.AddTab<BlankViewModel>("Contacts2", "Icon.png");
+                                tabbedNavigationPage.AddTab<BlankViewModel>("Contacts3", "Icon.png");
+                                Detail = tabbedNavigationPage;
+                                break;
+                            case 2:
+                                tabbedNavigationPage.AddTab<TabViewModel>("JustTab", "Icon.png");
+                                Detail = tabbedNavigationPage;
+                                break;
+
+                        }
+                    }
                 }
 
                 IsPresented = false;
