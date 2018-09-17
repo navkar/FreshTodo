@@ -17,7 +17,6 @@ namespace MyTasks.TODO.ViewModels
         public BaseViewModel()
         {
             ApiManager = new ApiManager(todoApi);
-
         }
 
         public async Task RunSafe(Task task, bool ShowLoading = true, string loadinMessage = null)

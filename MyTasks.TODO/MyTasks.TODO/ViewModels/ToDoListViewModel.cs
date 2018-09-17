@@ -36,19 +36,19 @@ namespace MyTasks.TODO.ViewModels
             base.ViewIsAppearing(sender, e);
 
             Task.Run(async () => {
-                UserDialogs.Instance.ShowLoading();
-                ToDoItems = await InvokeTodoApi();
-                //await GetData();
-                UserDialogs.Instance.HideLoading();
+                //UserDialogs.Instance.ShowLoading();
+               // ToDoItems = await InvokeTodoApi();
+                await RunSafe(GetData());
+                //UserDialogs.Instance.HideLoading();
             });
         }
 
         async Task GetData()
         {
-            var makeUpsResponse = await ApiManager.GetToDoItemsAsync();
-            if (makeUpsResponse.IsSuccessStatusCode)
+            var itemsResponse = await ApiManager.GetToDoItemsAsync();
+            if (itemsResponse.IsSuccessStatusCode)
             {
-                var response = await makeUpsResponse.Content.ReadAsStringAsync();
+                var response = await itemsResponse.Content.ReadAsStringAsync();
                 var json = await Task.Run(() => JsonConvert.DeserializeObject<List<TodoItem>>(response));
                 ToDoItems = new ObservableCollection<TodoItem>(json);
             }
