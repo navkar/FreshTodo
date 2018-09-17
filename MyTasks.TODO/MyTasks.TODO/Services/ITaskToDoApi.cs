@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using MyTasks.TODO.Models;
@@ -12,6 +13,9 @@ namespace MyTasks.TODO.Services
     public interface ITaskToDoApi
     {
         [Get("/dev/UserNotesLamba")]
-        Task<ObservableCollection<TodoItem>> GetTodoItems();
+        Task<ObservableCollection<TodoItem>> GetTodoItemsDirect();
+
+        [Get("/dev/UserNotesLamba")]
+        Task<HttpResponseMessage> GetTodoItems();
     }
 }

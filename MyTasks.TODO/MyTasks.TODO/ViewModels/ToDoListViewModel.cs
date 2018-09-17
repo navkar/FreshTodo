@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 using Refit;
 using MyTasks.TODO.Services;
 using Acr.UserDialogs;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MyTasks.TODO.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class ToDoListViewModel : FreshMvvm.FreshBasePageModel
+    public class ToDoListViewModel : BaseViewModel
     {
         public ToDoListViewModel()
         {
@@ -35,16 +38,30 @@ namespace MyTasks.TODO.ViewModels
             Task.Run(async () => {
                 UserDialogs.Instance.ShowLoading();
                 ToDoItems = await InvokeTodoApi();
+                //await GetData();
                 UserDialogs.Instance.HideLoading();
             });
+        }
 
+        async Task GetData()
+        {
+            var makeUpsResponse = await ApiManager.GetToDoItemsAsync();
+            if (makeUpsResponse.IsSuccessStatusCode)
+            {
+                var response = await makeUpsResponse.Content.ReadAsStringAsync();
+                var json = await Task.Run(() => JsonConvert.DeserializeObject<List<TodoItem>>(response));
+                ToDoItems = new ObservableCollection<TodoItem>(json);
+            }
+            else
+            {
+                await PageDialog.AlertAsync("Unable to get data", "Error", "Ok");
+            }
         }
 
         private async Task<ObservableCollection<TodoItem>> InvokeTodoApi()
         {
             var response = RestService.For<ITaskToDoApi>(Config.ApiUrl);
-            return await response.GetTodoItems();
+            return await response.GetTodoItemsDirect();
         }
-
     }
 }
