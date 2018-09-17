@@ -36,7 +36,7 @@ namespace MyTasks.TODO
             masterDetailNav.AddPage<ContactListViewModel>("Contacts", "Items", '\uf192'.ToString(), 1); // target icon
 
             masterDetailNav.AddPage<AboutViewModel>("About", "Settings", '\uf129'.ToString()); // info icon
-            masterDetailNav.AddPage<TabViewModel>("Tab", "Settings", '\uf007'.ToString(), 2); // user icon
+            masterDetailNav.AddPage<TabViewModel>("User Profile", "Settings", '\uf007'.ToString(), 2); // user icon
             
             MainPage = loginStack;
         }

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace:MyTasks.TODO.Controls;assembly=MyTasks.TODO"             
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"                 
              x:Class="MyTasks.TODO.Views.ToDoListView"
@@ -16,7 +17,8 @@
                 IsPullToRefreshEnabled="false"                      
                 ItemsSource="{Binding ToDoItems}" SelectedItem="{Binding SelectedTodoItem}" >
                 <ListView.Header>
-                    <StackLayout BackgroundColor="White">
+                    <common:GradientColorStack ColorsList="#B993D6,#8CA6DB" Mode="ToBottom">
+                    <StackLayout BackgroundColor="Transparent">
                         <BoxView BackgroundColor="Transparent" HeightRequest="1" />
                         <Label FontSize="Large" FontAttributes="Bold" Text="Organization Name" TextColor="{StaticResource DetailTextColor}" VerticalOptions="Center" HorizontalOptions="Center" />
                         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -45,6 +47,7 @@
                             <Label FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Start" Text="{Binding ItemCount, StringFormat='ITEMS ({0})'}" />
                         </StackLayout>
                     </StackLayout>
+                    </common:GradientColorStack>
                 </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate>

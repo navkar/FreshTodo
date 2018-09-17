@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
             x:Class="MyTasks.TODO.Views.MasterView"
             Title="Menu">
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="#B993D6" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#8CA6DB" StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
     <ContentPage.Resources>
         <Style x:Key="IconFA" TargetType="Label">
             <Setter Property="Margin" Value="5,5,5,5"/>
@@ -23,7 +30,7 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
-    <ListView BackgroundColor="White" 
+    <ListView BackgroundColor="Transparent" 
               x:Name="ListView" SeparatorVisibility="None" VerticalOptions="FillAndExpand" GroupDisplayBinding="{Binding Key}" 
               HasUnevenRows="True" IsGroupingEnabled="True" SelectionMode="None">
             <ListView.Header>

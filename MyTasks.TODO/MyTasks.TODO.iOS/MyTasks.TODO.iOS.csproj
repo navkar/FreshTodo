@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\GradientColorStackRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
       <SubType>Designer</SubType>
@@ -156,6 +157,9 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Ansuria.XFGloss">
+      <Version>1.1.3</Version>
     </PackageReference>
     <PackageReference Include="FreshMvvm">
       <Version>2.2.4</Version>

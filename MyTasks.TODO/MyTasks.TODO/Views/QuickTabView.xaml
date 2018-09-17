@@ -1,24 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
              Title="{Binding Title}"
+             BarBackgroundColor="White"
+             BarTextColor="{StaticResource TabBarBackground}"
+             xmlns:common="clr-namespace:MyTasks.TODO.Controls;assembly=MyTasks.TODO"
              x:Class="MyTasks.TODO.Views.QuickTabView">
   <!--Pages can be added as references or inline-->
     <ContentPage Title="Tab 1">
+        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
         <StackLayout>
             <Label FontSize="Large" HorizontalTextAlignment="Center" Text="First page gets added as a detail page" />
         </StackLayout>
+        </common:GradientColorStack>
     </ContentPage>
 
     <ContentPage Title="Tab 2">
-        <StackLayout>
-            <Label FontSize="Large" HorizontalTextAlignment="Center" Text="Tab 2" />
-        </StackLayout>
+        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
+            <StackLayout>
+                <Label FontSize="Large" HorizontalTextAlignment="Center" Text="Tabs are at the bottom like iOS" />
+            </StackLayout>
+        </common:GradientColorStack>
     </ContentPage>
 
     <ContentPage Title="Tab 3">
-        <StackLayout>
-            <Label FontSize="Large" HorizontalTextAlignment="Center" Text="Tab 3" />
-        </StackLayout>
+        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
+            <StackLayout>
+                <Label FontSize="Large" HorizontalTextAlignment="Center" Text="Tab 3" />
+            </StackLayout>
+        </common:GradientColorStack>
     </ContentPage>
 </TabbedPage>
