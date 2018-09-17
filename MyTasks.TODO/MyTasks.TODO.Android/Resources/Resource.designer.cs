@@ -63,7 +63,6 @@ namespace MyTasks.TODO.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::MyTasks.TODO.Droid.Resource.Styleable.ProgressWheel_ahText;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::MyTasks.TODO.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::MyTasks.TODO.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
-			global::ModernHttpClient.Resource.String.library_name = global::MyTasks.TODO.Droid.Resource.String.library_name;
 			global::Splat.Resource.String.library_name = global::MyTasks.TODO.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MyTasks.TODO.Droid.Resource.Attribute.actionBarSize;
 		}
