@@ -9,36 +9,40 @@ namespace MyTasks.TODO.ViewModels
 {
     public class BaseViewModel : FreshMvvm.FreshBasePageModel
     {
-        public IUserDialogs PageDialog = UserDialogs.Instance;
         public IApiManager ApiManager;
         IApiService<ITaskToDoApi> todoApi = new ApiService<ITaskToDoApi>(Config.ApiUrl);
+        public IUserDialogs PageDialog = null;
 
         public bool IsBusy { get; set; }
-        public BaseViewModel()
+        public BaseViewModel(IUserDialogs dialogs)
         {
             ApiManager = new ApiManager(todoApi);
+            PageDialog = dialogs;
         }
 
-        public async Task RunSafe(Task task, bool ShowLoading = true, string loadinMessage = null)
+        public async Task RunSafe(Task task, bool ShowLoading = true, string loadingMessage = null)
         {
             try
             {
                 if (IsBusy) return;
+                Debug.WriteLine("Run Safe - begin try");
                 IsBusy = true;
-                if (ShowLoading) UserDialogs.Instance.ShowLoading(loadinMessage ?? "Loading");
+                if (ShowLoading) PageDialog.ShowLoading(loadingMessage ?? "Loading");
                 await task;
+                Debug.WriteLine("Run Safe - end try");
             }
             catch (Exception e)
             {
                 IsBusy = false;
-                UserDialogs.Instance.HideLoading();
-                Debug.WriteLine(e.ToString());
-                await App.Current.MainPage.DisplayAlert("Eror", "Check your internet connection", "Ok");
+                PageDialog.HideLoading();
+                Debug.WriteLine(e.Message + e.StackTrace);
+                await App.Current.MainPage.DisplayAlert("Error", "Check your internet connection", "OK");
             }
             finally
             {
+                Debug.WriteLine("Run Safe - finally");
                 IsBusy = false;
-                if (ShowLoading) UserDialogs.Instance.HideLoading();
+                if (ShowLoading) PageDialog.HideLoading();
             }
         }
     }

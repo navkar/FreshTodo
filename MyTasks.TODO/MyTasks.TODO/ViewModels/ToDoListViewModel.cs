@@ -12,6 +12,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Windows.Input;
+using System.Diagnostics;
 
 namespace MyTasks.TODO.ViewModels
 {
@@ -20,7 +21,7 @@ namespace MyTasks.TODO.ViewModels
     {
         public ICommand GetDataCommand { get; set; }
 
-        public ToDoListViewModel()
+        public ToDoListViewModel(IUserDialogs dialogs) : base(dialogs)
         {
             Title = "ToDo List";
             ToDoItems = new ObservableCollection<TodoItem>();
@@ -38,31 +39,39 @@ namespace MyTasks.TODO.ViewModels
         {
             base.ViewIsAppearing(sender, e);
 
-            //Task.Run(async () => {
-            //    await RefreshToDoData();
-            //});
+            Task.Run(async () =>
+            {
+                //await RefreshToDoData();
+                await RunSafe(GetData());
+            });
         }
 
         private async Task RefreshToDoData()
         {
-            UserDialogs.Instance.ShowLoading();
-            ToDoItems = await InvokeTodoApi();
-            UserDialogs.Instance.HideLoading();
+            try
+            {
+                UserDialogs.Instance.ShowLoading();
+                ToDoItems = await InvokeTodoApi();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("message: " + e.Message + e.StackTrace);
+            }
+            finally
+            {
+                UserDialogs.Instance.HideLoading();
+            }
         }
 
         async Task GetData()
         {
             var itemsResponse = await ApiManager.GetToDoItemsAsync();
-            if (itemsResponse.IsSuccessStatusCode)
-            {
-                var response = await itemsResponse.Content.ReadAsStringAsync();
-                var json = await Task.Run(() => JsonConvert.DeserializeObject<List<TodoItem>>(response));
-                ToDoItems = new ObservableCollection<TodoItem>(json);
-            }
-            else
-            {
-                await PageDialog.AlertAsync("Unable to get data", "Error", "Ok");
-            }
+            if (!itemsResponse.IsSuccessStatusCode)
+                await UserDialogs.Instance.AlertAsync(string.Format("reason: {0}", itemsResponse.ReasonPhrase), "Error", "Ok");
+
+            var response = await itemsResponse.Content.ReadAsStringAsync();
+            var json = await Task.Run(() => JsonConvert.DeserializeObject<List<TodoItem>>(response));
+            ToDoItems = new ObservableCollection<TodoItem>(json);
         }
 
         private async Task<ObservableCollection<TodoItem>> InvokeTodoApi()

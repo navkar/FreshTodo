@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,7 +19,6 @@ namespace MyTasks.TODO.Services
 {
     public class ApiManager : IApiManager
     {
-        IUserDialogs _userDialogs = UserDialogs.Instance;
         IConnectivity _connectivity = CrossConnectivity.Current;
         IApiService<ITaskToDoApi> todoApi;
         public bool IsConnected { get; set; }
@@ -64,11 +64,11 @@ namespace MyTasks.TODO.Services
 
             if (!IsConnected)
             {
-                var strngResponse = "There's not a network connection";
+                var strngResponse = "No network connection";
                 data.StatusCode = HttpStatusCode.BadRequest;
                 data.Content = new StringContent(strngResponse);
 
-                _userDialogs.Toast(strngResponse, TimeSpan.FromSeconds(1));
+                UserDialogs.Instance.Toast(strngResponse, TimeSpan.FromSeconds(1));
                 return data;
             }
 
@@ -76,11 +76,11 @@ namespace MyTasks.TODO.Services
 
             if (!IsReachable)
             {
-                var strngResponse = "There's not an internet connection";
+                var strngResponse = "No internet connection";
                 data.StatusCode = HttpStatusCode.BadRequest;
                 data.Content = new StringContent(strngResponse);
 
-                _userDialogs.Toast(strngResponse, TimeSpan.FromSeconds(1));
+                UserDialogs.Instance.Toast(strngResponse, TimeSpan.FromSeconds(1));
                 return data;
             }
 
@@ -97,9 +97,11 @@ namespace MyTasks.TODO.Services
             {
                 var result = await task;
 
+                Debug.WriteLine("[Status Code] " + result.StatusCode);
+
                 if (result.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    //Logout the user 
+                
                 }
                 runningTasks.Remove(task.Id);
 
