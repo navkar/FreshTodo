@@ -67,7 +67,10 @@ namespace MyTasks.TODO.ViewModels
         {
             var itemsResponse = await ApiManager.GetToDoItemsAsync();
             if (!itemsResponse.IsSuccessStatusCode)
+            {
                 await UserDialogs.Instance.AlertAsync(string.Format("reason: {0}", itemsResponse.ReasonPhrase), "Error", "Ok");
+                return;
+            }
 
             var response = await itemsResponse.Content.ReadAsStringAsync();
             var json = await Task.Run(() => JsonConvert.DeserializeObject<List<TodoItem>>(response));
