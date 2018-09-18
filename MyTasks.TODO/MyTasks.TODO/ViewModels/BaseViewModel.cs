@@ -24,11 +24,8 @@ namespace MyTasks.TODO.ViewModels
             try
             {
                 if (IsBusy) return;
-
                 IsBusy = true;
-
                 if (ShowLoading) UserDialogs.Instance.ShowLoading(loadinMessage ?? "Loading");
-
                 await task;
             }
             catch (Exception e)
@@ -37,7 +34,6 @@ namespace MyTasks.TODO.ViewModels
                 UserDialogs.Instance.HideLoading();
                 Debug.WriteLine(e.ToString());
                 await App.Current.MainPage.DisplayAlert("Eror", "Check your internet connection", "Ok");
-
             }
             finally
             {

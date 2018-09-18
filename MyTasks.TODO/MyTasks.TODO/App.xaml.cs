@@ -18,7 +18,6 @@ namespace MyTasks.TODO
 			InitializeComponent();
 
             FreshIOC.Container.Register<IUserDialogs>(UserDialogs.Instance);
-
             FreshPageModelResolver.PageModelMapper = new FreshViewModelMapper();
             InitNavigation();
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using MyTasks.TODO.Models;
 using Refit;
@@ -16,6 +17,6 @@ namespace MyTasks.TODO.Services
         Task<ObservableCollection<TodoItem>> GetTodoItemsDirect();
 
         [Get("/dev/UserNotesLamba")]
-        Task<HttpResponseMessage> GetTodoItems();
+        Task<HttpResponseMessage> GetTodoItems(CancellationToken cancellationToken);
     }
 }

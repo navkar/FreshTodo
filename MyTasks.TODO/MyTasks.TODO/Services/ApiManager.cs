@@ -52,11 +52,8 @@ namespace MyTasks.TODO.Services
         public async Task<HttpResponseMessage> GetToDoItemsAsync()
         { 
             var cts = new CancellationTokenSource();
-            var task = todoApi.GetApi(Priority.UserInitiated).GetTodoItems();
-            var responseTask = RemoteRequestAsync(task);
-            runningTasks.Add(responseTask.Id, cts);
-
-            return await responseTask;
+            var task = RemoteRequestAsync<HttpResponseMessage>(todoApi.GetApi(Priority.UserInitiated).GetTodoItems(cts.Token));
+            return await task;
         }
 
         protected async Task<TData> RemoteRequestAsync<TData>(Task<TData> task)
