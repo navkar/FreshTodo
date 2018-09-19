@@ -1,4 +1,6 @@
-﻿namespace MyTasks.TODO.ViewModels
+﻿using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+
+namespace MyTasks.TODO.ViewModels
 {
     public class QuickTabViewModel : FreshMvvm.FreshBasePageModel
     {
@@ -6,7 +8,7 @@
 
         public QuickTabViewModel()
         {
-
+            
         }
     }
 }

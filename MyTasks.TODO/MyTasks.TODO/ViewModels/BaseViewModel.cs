@@ -27,7 +27,7 @@ namespace MyTasks.TODO.ViewModels
                 if (IsBusy) return;
                 Debug.WriteLine("Run Safe - begin try");
                 IsBusy = true;
-                if (ShowLoading) PageDialog.ShowLoading(loadingMessage ?? "Loading");
+                if (ShowLoading) PageDialog.ShowLoading(loadingMessage ?? "Working");
                 await task;
                 Debug.WriteLine("Run Safe - end try");
             }

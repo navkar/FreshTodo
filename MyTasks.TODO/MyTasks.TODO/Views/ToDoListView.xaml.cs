@@ -26,7 +26,7 @@ namespace MyTasks.TODO.Views
             var pageModel = BindingContext as ToDoListViewModel;
 
             // Modify the page based on the pageModel
-            //pageModel.GetDataCommand.Execute(null);
+            pageModel.GetDataCommand.Execute(null);
         }
 
         protected override void OnAppearing()

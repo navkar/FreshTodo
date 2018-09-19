@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Lottie.Forms.iOS.Renderers;
 using MyTasks.TODO;
 using UIKit;
 
@@ -27,6 +28,8 @@ namespace LPains.LazyLoadedMasterDetailPage.iOS
 
             /********** ADD THIS CALL TO INITIALIZE XFGloss *********/
             XFGloss.iOS.Library.Init();
+
+            AnimationViewRenderer.Init();
 
             LoadApplication(new App());
 

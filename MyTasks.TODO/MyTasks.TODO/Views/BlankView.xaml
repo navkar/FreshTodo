@@ -2,6 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="MyTasks.TODO.Views.BlankView"
+            xmlns:common="clr-namespace:MyTasks.TODO.Controls;assembly=MyTasks.TODO"
+            xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
             Title="{Binding Title}">
-    <Label Text="You just landed at a blank page" Margin="15,10"></Label>
+    <ContentPage.Content>
+        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <forms:AnimationView 
+                x:Name="blankAnimation" 
+                Animation="servishero_loading.json" 
+                AutoPlay="True" Loop="true"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand" />
+                <Label x:Name="lblComment" IsVisible="False" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                   Text="Thank you!" TextColor="White" FontSize="Large" FontAttributes="Bold" />
+            </StackLayout>
+        </common:GradientColorStack>
+    </ContentPage.Content>
 </ContentPage>

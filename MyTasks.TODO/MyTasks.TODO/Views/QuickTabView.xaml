@@ -2,34 +2,33 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-             android:TabbedPage.ToolbarPlacement="Bottom"
+             android:TabbedPage.ToolbarPlacement="Top"
              Title="{Binding Title}"
-             BarBackgroundColor="White"
+             BarBackgroundColor="#B06AB3"
              BarTextColor="{StaticResource TabBarBackground}"
              xmlns:common="clr-namespace:MyTasks.TODO.Controls;assembly=MyTasks.TODO"
              x:Class="MyTasks.TODO.Views.QuickTabView">
-  <!--Pages can be added as references or inline-->
-    <ContentPage Title="Tab 1">
-        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
-        <StackLayout>
-            <Label FontSize="Large" HorizontalTextAlignment="Center" Text="First page gets added as a detail page" />
-        </StackLayout>
-        </common:GradientColorStack>
-    </ContentPage>
-
-    <ContentPage Title="Tab 2">
-        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
-            <StackLayout>
-                <Label FontSize="Large" HorizontalTextAlignment="Center" Text="Tabs are at the bottom like iOS" />
-            </StackLayout>
-        </common:GradientColorStack>
-    </ContentPage>
-
-    <ContentPage Title="Tab 3">
-        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
-            <StackLayout>
-                <Label FontSize="Large" HorizontalTextAlignment="Center" Text="Tab 3" />
-            </StackLayout>
-        </common:GradientColorStack>
-    </ContentPage>
+    <TabbedPage.Children>
+        <ContentPage Icon="avacado.png" Title="Avacado">
+            <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label FontSize="Large" TextColor="White" HorizontalTextAlignment="Center" Text="Avacado Page" />
+                </StackLayout>
+            </common:GradientColorStack>
+        </ContentPage>
+        <ContentPage Icon="apple.png" Title="Apple">
+            <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label FontSize="Large" TextColor="White" HorizontalTextAlignment="Center" Text="Apple Page" />
+                </StackLayout>
+            </common:GradientColorStack>
+        </ContentPage>
+        <ContentPage Icon="chocolate_bar.png" Title="Chocolate">
+            <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label FontSize="Large" TextColor="White" HorizontalTextAlignment="Center" Text="Chocolate Bar Page" />
+                </StackLayout>
+            </common:GradientColorStack>
+        </ContentPage>
+    </TabbedPage.Children>
 </TabbedPage>

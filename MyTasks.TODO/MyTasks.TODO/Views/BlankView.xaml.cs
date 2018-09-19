@@ -9,7 +9,21 @@ namespace MyTasks.TODO.Views
 		public BlankView()
 		{
 			InitializeComponent ();
-            //NavigationPage.SetHasNavigationBar(this, false);
 		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Device.StartTimer(new System.TimeSpan(0, 0, 4), StopAnimation);
+        }
+
+        private bool StopAnimation()
+        {
+            blankAnimation.IsPlaying = false;
+            blankAnimation.IsVisible = false;
+            lblComment.IsVisible = true;
+            return true;
+        }
+
 	}
 }

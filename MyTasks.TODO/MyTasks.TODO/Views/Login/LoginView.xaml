@@ -2,15 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="MyTasks.TODO.Views.LoginView"
+             xmlns:common="clr-namespace:MyTasks.TODO.Controls;assembly=MyTasks.TODO"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" Margin="0,60,0,0">
-            <Label Text="User Name" />
-            <Entry Text="{Binding Username}" WidthRequest="200"/>
-            <Label Text="Password" />
-            <Entry Text="{Binding Password}" IsPassword="true" WidthRequest="200"/>
-            <Button Text="Login" Command="{Binding LoginCommand}" />
-        </StackLayout>
+        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <forms:AnimationView 
+                x:Name="blankAnimation" 
+                Animation="loading_dot.json" 
+                AutoPlay="True" Loop="true"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand" />
+                <StackLayout Padding="5">
+                    <Label Text="USER NAME" FontFamily="IndieFlower.ttf#Regular" FontSize="Medium" TextColor="White" />
+                    <Entry Text="{Binding Username}" WidthRequest="200"/>
+                    <Label Text="PASSWORD" FontFamily="IndieFlower.ttf#Regular" FontSize="Medium" TextColor="White" />
+                    <Entry Text="{Binding Password}" IsPassword="true" WidthRequest="200"/>
+                    <Button Text="Login" FontFamily="IndieFlower.ttf#Regular" Command="{Binding LoginCommand}" />
+                </StackLayout>
+            </StackLayout>
+        </common:GradientColorStack>
     </ContentPage.Content>
 </ContentPage>
     

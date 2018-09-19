@@ -102,6 +102,9 @@
     </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Resources\FontAwesome.ttf" />
+    <BundleResource Include="Resources\confetti.json" />
+    <BundleResource Include="Resources\loading_dot.json" />
+    <BundleResource Include="Resources\servishero_loading.json" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -161,10 +164,13 @@
     <PackageReference Include="Ansuria.XFGloss">
       <Version>1.1.3</Version>
     </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>2.6.3</Version>
+    </PackageReference>
     <PackageReference Include="FreshMvvm">
       <Version>2.2.4</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.637273" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyTasks.TODO\MyTasks.TODO.csproj">

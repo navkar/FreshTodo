@@ -38,12 +38,6 @@ namespace MyTasks.TODO.ViewModels
         protected override void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
-
-            Task.Run(async () =>
-            {
-                //await RefreshToDoData();
-                await RunSafe(GetData());
-            });
         }
 
         private async Task RefreshToDoData()

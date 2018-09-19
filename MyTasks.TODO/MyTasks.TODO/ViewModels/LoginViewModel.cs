@@ -14,7 +14,7 @@ namespace MyTasks.TODO.ViewModels
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public string Title => "Login";
+        public string Title => "";
 
         public Command LoginCommand => new Command(Login);
 
