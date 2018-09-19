@@ -1,4 +1,4 @@
-## Xamarin App with navigation drawer menu using FreshMVVM libary
+## Xamarin App with navigation drawer menu using FreshMVVM library
 
 This app uses the following NUGETS
 
