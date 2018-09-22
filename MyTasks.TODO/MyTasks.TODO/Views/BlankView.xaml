@@ -15,7 +15,7 @@
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand" />
                 <Label x:Name="lblComment" IsVisible="False" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                   Text="Thank you!" TextColor="White" FontSize="Large" FontAttributes="Bold" />
+                   FontFamily="IndieFlower.ttf#Regular" Text="Thank you!" TextColor="White" FontSize="Large" FontAttributes="Bold" />
             </StackLayout>
         </common:GradientColorStack>
     </ContentPage.Content>

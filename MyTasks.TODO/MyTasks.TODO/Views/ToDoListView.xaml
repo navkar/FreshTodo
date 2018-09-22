@@ -7,7 +7,7 @@
              x:Class="MyTasks.TODO.Views.ToDoListView"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="+" Command="{Binding AddToDoItem}" Order="Primary" Priority="0" />
+        <ToolbarItem Name="Add" Command="{Binding AddToDoItem}" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>    
     <ContentPage.Content>
         <StackLayout>
@@ -20,7 +20,8 @@
                     <common:GradientColorStack ColorsList="#B993D6,#8CA6DB" Mode="ToBottom">
                     <StackLayout BackgroundColor="Transparent">
                         <BoxView BackgroundColor="Transparent" HeightRequest="1" />
-                        <Label FontSize="Large" FontAttributes="Bold" Text="Organization Name" TextColor="{StaticResource DetailTextColor}" VerticalOptions="Center" HorizontalOptions="Center" />
+                            <Label FontSize="Large" FontAttributes="Bold" FontFamily="IndieFlower.ttf#Regular" 
+                                   Text="Organization Name" TextColor="{StaticResource DetailTextColor}" VerticalOptions="Center" HorizontalOptions="Center" />
                         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                             <Grid Padding="0,10,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
@@ -38,8 +39,8 @@
                                     <fftransformations:CircleTransformation/>
                                 </ffimageloading:CachedImage.Transformations>
                             </ffimageloading:CachedImage>
-                                <Label Grid.Row="1" Text="Naveen Kar" FontSize="Large" TextColor="{StaticResource DetailTextColor}" HorizontalTextAlignment="Center" />
-                                <Label Grid.Row="2" Text="test@gmail.com" FontSize="Small" TextColor="{StaticResource DetailTextColor}" HorizontalTextAlignment="Center" />
+                                    <Label Grid.Row="1" FontFamily="IndieFlower.ttf#Regular" Text="Naveen Kar" FontSize="Large" TextColor="{StaticResource DetailTextColor}" HorizontalTextAlignment="Center" />
+                                    <Label Grid.Row="2" FontFamily="IndieFlower.ttf#Regular" Text="test@gmail.com" FontSize="Small" TextColor="{StaticResource DetailTextColor}" HorizontalTextAlignment="Center" />
                             </Grid>
                         </StackLayout>
                         <BoxView BackgroundColor="Transparent" HeightRequest="1" />

@@ -19,5 +19,10 @@ namespace MyTasks.TODO.Services
         [Get("/dev/UserNotesLamba")]
         Task<HttpResponseMessage> GetTodoItems(CancellationToken cancellationToken);
 
+        [Post("/dev/UserNotesLamba")]
+        Task<HttpResponseMessage> AddTodoItem([Body] TodoItem todoItem);
+
+        [Post("/dev/UserNotesLamba")]
+        Task<HttpResponseMessage> AddBuffTodoItem([Body(buffered: true)] TodoItem todoItem);
     }
 }

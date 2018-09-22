@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace:MyTasks.TODO.Controls;assembly=MyTasks.TODO"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"         
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             Title="{Binding Title}"
+             x:Class="MyTasks.TODO.Views.NewToDoListView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Cancel" Command="{Binding GoBackCommand}" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <ffimageloading:CachedImage Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"
+                                LoadingPlaceholder="Icon.png" ErrorPlaceholder="Icon.png" DownsampleToViewSize="true"
+                                Aspect="AspectFill" HeightRequest="200" WidthRequest="200" Source="todo.png">
+                    <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation/>
+                    </ffimageloading:CachedImage.Transformations>
+                </ffimageloading:CachedImage>
+                <Label Text="New TODO Item" FontSize="Large" TextColor="{StaticResource DetailTextColor}" HorizontalTextAlignment="Center" />
+                <StackLayout Padding="5">
+                    <Label Text="TO DO" FontFamily="IndieFlower.ttf#Regular" FontSize="Medium" TextColor="White" />
+                    <Entry Text="{Binding ToDoText}" FontFamily="IndieFlower.ttf#Regular" TextColor="White" WidthRequest="500"/>
+                    <Button Text="SAVE" FontFamily="IndieFlower.ttf#Regular" Command="{Binding SaveToDoCommand}" />
+                </StackLayout>
+            </StackLayout>
+        </common:GradientColorStack>
+    </ContentPage.Content>
+</ContentPage>

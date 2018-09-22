@@ -19,13 +19,27 @@ namespace MyTasks.TODO.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class ToDoListViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Get Data Command
+        /// </summary>
         public ICommand GetDataCommand { get; set; }
+
+        public bool IsRefreshing { get; set; }
+        /// <summary>
+        /// Add TODO Command
+        /// </summary>
+        public ICommand AddToDoItem { get; set; }
 
         public ToDoListViewModel(IUserDialogs dialogs) : base(dialogs)
         {
             Title = "ToDo List";
             ToDoItems = new ObservableCollection<TodoItem>();
             GetDataCommand = new Command(async () => await RunSafe(GetData()));
+            AddToDoItem = new Command(
+                async () => {
+                    // Pushes a modal
+                    await CoreMethods.PushPageModel<NewToDoListViewModel>(null, true);
+            });
         }
         public ObservableCollection<TodoItem> ToDoItems { get; set; }
 
@@ -38,6 +52,7 @@ namespace MyTasks.TODO.ViewModels
         protected override void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
+            Task.Run(async () => await RunSafe(GetData()));
         }
 
         private async Task RefreshToDoData()
@@ -59,16 +74,20 @@ namespace MyTasks.TODO.ViewModels
 
         async Task GetData()
         {
+            if (IsRefreshing) return;
+            IsRefreshing = true;
             var itemsResponse = await ApiManager.GetToDoItemsAsync();
             if (!itemsResponse.IsSuccessStatusCode)
             {
                 await UserDialogs.Instance.AlertAsync(string.Format("reason: {0}", itemsResponse.ReasonPhrase), "Error", "Ok");
+                IsRefreshing = false;
                 return;
             }
 
             var response = await itemsResponse.Content.ReadAsStringAsync();
             var json = await Task.Run(() => JsonConvert.DeserializeObject<List<TodoItem>>(response));
             ToDoItems = new ObservableCollection<TodoItem>(json);
+            IsRefreshing = false;
         }
 
         private async Task<ObservableCollection<TodoItem>> InvokeTodoApi()

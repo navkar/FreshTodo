@@ -110,5 +110,12 @@ namespace MyTasks.TODO.Services
 
             return data;
         }
+
+        public async Task<HttpResponseMessage> AddToDoItemsAsync(TodoItem item)
+        {
+            var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync<HttpResponseMessage>(todoApi.GetApi(Priority.UserInitiated).AddTodoItem(item));
+            return await task;
+        }
     }
 }
