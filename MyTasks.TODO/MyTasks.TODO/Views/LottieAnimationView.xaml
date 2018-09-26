@@ -1,17 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="MyTasks.TODO.Views.LottieAnimationView"
+             xmlns:common="clr-namespace:MyTasks.TODO.Controls;assembly=MyTasks.TODO"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"             
              Title="{Binding Title}"
-             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
+             x:Class="MyTasks.TODO.Views.LottieAnimationView">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <common:GradientColorStack ColorsList="#B06AB3,#4568DC" Mode="ToBottom">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <forms:AnimationView 
                 x:Name="AnimationView" 
                 Animation="confetti.json" 
                 AutoPlay="True" Loop="true"
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand" />
-        </StackLayout>
+            </StackLayout>
+        </common:GradientColorStack>
     </ContentPage.Content>
 </ContentPage>    

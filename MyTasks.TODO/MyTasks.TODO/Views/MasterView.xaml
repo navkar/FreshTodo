@@ -47,7 +47,7 @@
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" HeightRequest="42" Padding="16, 0, 8, 0">
                         <Label Text="{Binding Icon}" Style="{StaticResource IconFA}"></Label>
-                        <Label Text="{Binding Title}" FontSize="Medium" Opacity="0.87" VerticalTextAlignment="Center"></Label>
+                        <Label Text="{Binding Title}" FontFamily="IndieFlower.ttf#Regular" FontSize="Large" Opacity="0.87" VerticalTextAlignment="Center"></Label>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

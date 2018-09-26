@@ -17,5 +17,23 @@
         <x:Double x:Key="SmallSpacing">4</x:Double>
         <x:Double x:Key="MediumSpacing">8</x:Double>
         <x:Double x:Key="StandardSpacing">16</x:Double>
+
+        <Style x:Key="SmallButton" TargetType="Button">
+            <Setter Property="FontSize" Value="Micro" />
+            <Setter Property="HeightRequest">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:Double" Default="-1">
+                        <On Platform="iOS" Value="20" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="TextColor">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Color">
+                        <On Platform="iOS" Value="Gray" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

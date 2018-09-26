@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace:MyTasks.TODO.Controls;assembly=MyTasks.TODO"
+             xmlns:views="clr-namespace:MyTasks.TODO.Views;assembly=MyTasks.TODO"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
+             Title="{Binding Title}"
+             BackgroundColor="#B06AB3"
+             x:Name="DeckItemsPage"
+             x:Class="MyTasks.TODO.Views.SwipeCardsView">
+    <ContentPage.Content>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+
+            <common:GradientColorStack Grid.Row="1" ColorsList="#B06AB3,#8CA6DB" Mode="ToBottomRight">
+            <Button 
+                HorizontalOptions="Center"
+                Text="Next Question"
+                CommandParameter="{Binding SelectedIndex}"
+                Command="{Binding NextQuestionCommand}"
+                TextColor="White"                    
+                FontAttributes="Bold"
+                FontSize="Medium"
+                BackgroundColor="Transparent" />
+            </common:GradientColorStack>
+
+            <cards:CarouselView Grid.Row="0"
+                x:Name="CardStackView"
+                ItemsSource="{Binding Cards}"
+                BackgroundColor="Transparent"
+                SelectedIndex="{Binding CurrentPositionIndex}"
+                Margin="1">
+
+                <!-- Item template for the card's content -->
+                <cards:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <common:GradientColorStack ColorsList="#B06AB3,#8CA6DB" Mode="ToBottom">
+                            <Grid Padding="1,1,1,1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40*" />
+                                    <RowDefinition Height="60*" />
+                                </Grid.RowDefinitions>
+
+                                <ScrollView Padding="5,5,5,5" Grid.Row="0">
+                                    <Label TextColor="White"
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"
+                                    HorizontalTextAlignment="Start"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center" 
+                                    Text="{Binding DisplayQuestion}" />
+                                </ScrollView>
+
+                                <ListView x:Name="OptionsListView" Grid.Row="1"
+                                BackgroundColor="Transparent"
+                                ItemsSource="{Binding Options}"
+                                ItemTapped="OptionsListView_ItemTapped"
+                                SeparatorVisibility="Default" >
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Padding="2,2,2,2">
+                                                    <Label TextColor="White" 
+                                                        FontAttributes="None"
+                                                        FontSize="Medium"
+                                                        Text="{Binding DisplayOption}"
+                                                        HorizontalTextAlignment="Start"
+                                                        VerticalOptions="CenterAndExpand" 
+                                                        HorizontalOptions="StartAndExpand">
+                                                    </Label>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                            </Grid>
+                        </common:GradientColorStack>
+                    </DataTemplate>
+                </cards:CarouselView.ItemTemplate>
+            </cards:CarouselView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

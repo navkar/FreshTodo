@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace:MyTasks.TODO.Controls;assembly=MyTasks.TODO"
+             xmlns:views="clr-namespace:MyTasks.TODO.Views;assembly=MyTasks.TODO"
+             Title="{Binding Title}"
+             x:Class="MyTasks.TODO.Views.QuizDeckView">
+    <ContentPage.Content>
+        <common:GradientColorStack Padding="5,5,5,5" ColorsList="#FEAC5E,#C779D0,#4BC0C8" Mode="ToRight">
+            <StackLayout>
+                <Button Text="Clear Items" Command="{Binding ClearItemsCommand}"></Button>
+                <Button Text="Add 5 Items" Command="{Binding AddItemsCommand}"></Button>
+            </StackLayout>
+        </common:GradientColorStack>
+    </ContentPage.Content>
+</ContentPage>

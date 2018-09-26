@@ -32,7 +32,11 @@ namespace MyTasks.TODO
 
             masterDetailNav.AddPage<BlankViewModel>("Dashboard", "Dashboard", '\uf200'.ToString()); // piechart icon
 
+            //masterDetailNav.AddPage<QuizDeckViewModel>("QnA Deck", "Items", '\uf192'.ToString()); // flip icon
+
+            masterDetailNav.AddPage<SwipeCardsViewModel>("Swipe Me", "Items", '\uf192'.ToString()); // flip icon
             masterDetailNav.AddPage<LottieAnimationViewModel>("View Animation", "Items", '\uf192'.ToString()); // user icon
+            masterDetailNav.AddPage<FlipViewModel>("Flip View", "Items", '\uf192'.ToString()); // flip icon
             masterDetailNav.AddPage<ToDoListViewModel>("TODO Items", "Items", '\uf192'.ToString()); // user icon
             masterDetailNav.AddPage<QuickTabViewModel>("Quick Tabs", "Items", '\uf192'.ToString()); // target icon
             masterDetailNav.AddPage<ContactListViewModel>("Contacts", "Items", '\uf192'.ToString(), 1); // target icon
