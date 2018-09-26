@@ -8,6 +8,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace MyTasks.TODO.ViewModels
 {
@@ -16,12 +17,10 @@ namespace MyTasks.TODO.ViewModels
     {
         public string Title => "Swipe Cards View";
 
-        public int SelectedIndex { get; set; } = 0;
+        public int CurrentPositionIndex { get; set; } = 0;
                 
         public Command ItemTappedCommand { get; set; }
-
-        public Command CurrentPositionIndex { get; set; }
-
+        
         public Command NextQuestionCommand { get; set; }
         
         public ObservableCollection<DeckItem> Cards { get; set; }
@@ -35,20 +34,21 @@ namespace MyTasks.TODO.ViewModels
 
             NextQuestionCommand = new Command<int>((index) =>
             {
-                //CurrentPositionIndex = index++;
-                CoreMethods.DisplayAlert("Button", "clicked", "OK");
-            });
+                IList<int> selectedAnswers = Cards[CurrentPositionIndex].Options.Where(x => x.IsSelected == true).Select(x => x.Id).ToList();
 
-            CurrentPositionIndex = new Command((item) =>
-            {
-                int? index = item as int?;
-                if (index.HasValue)
+                var intersection = Cards[CurrentPositionIndex].Answers.Intersect(selectedAnswers);
+
+                if (intersection.Count() != Cards[CurrentPositionIndex].Answers.Count)
                 {
-                    SelectedIndex = index.Value;
-                    Console.WriteLine("Index: " + index.Value.ToString());
+                    CoreMethods.DisplayAlert("Check", "Incorrect answers were chosen", "OK");
                 }
+                else
+                {
+                    CoreMethods.DisplayAlert("Check", "Correct answers were chosen", "OK");
+                }
+                
             });
-
+            
             Task.Run(() => {
                 try
                 {

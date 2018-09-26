@@ -17,27 +17,16 @@
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
-            <common:GradientColorStack Grid.Row="1" ColorsList="#B06AB3,#8CA6DB" Mode="ToBottomRight">
-            <Button 
-                HorizontalOptions="Center"
-                Text="Next Question"
-                CommandParameter="{Binding SelectedIndex}"
-                Command="{Binding NextQuestionCommand}"
-                TextColor="White"                    
-                FontAttributes="Bold"
-                FontSize="Medium"
-                BackgroundColor="Transparent" />
-            </common:GradientColorStack>
-
-            <cards:CarouselView Grid.Row="0"
+            <cards:CardsView Grid.Row="0"
                 x:Name="CardStackView"
                 ItemsSource="{Binding Cards}"
                 BackgroundColor="Transparent"
+                IsCyclical="True"
                 SelectedIndex="{Binding CurrentPositionIndex}"
                 Margin="1">
 
                 <!-- Item template for the card's content -->
-                <cards:CarouselView.ItemTemplate>
+                <cards:CardsView.ItemTemplate>
                     <DataTemplate>
                         <common:GradientColorStack ColorsList="#B06AB3,#8CA6DB" Mode="ToBottom">
                             <Grid Padding="1,1,1,1">
@@ -58,13 +47,15 @@
 
                                 <ListView x:Name="OptionsListView" Grid.Row="1"
                                 BackgroundColor="Transparent"
-                                ItemsSource="{Binding Options}"
+                                ItemsSource="{Binding Options}" 
+                                RowHeight="50"
+                                HasUnevenRows="True"          
                                 ItemTapped="OptionsListView_ItemTapped"
                                 SeparatorVisibility="Default" >
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <StackLayout Padding="2,2,2,2">
+                                                <StackLayout Orientation="Horizontal" Padding="2,2,2,2">
                                                     <Label TextColor="White" 
                                                         FontAttributes="None"
                                                         FontSize="Medium"
@@ -73,6 +64,10 @@
                                                         VerticalOptions="CenterAndExpand" 
                                                         HorizontalOptions="StartAndExpand">
                                                     </Label>
+                                                    <common:OptionListSwitch 
+                                                            OptionListItem="{Binding .}" 
+                                                            Toggled="OptionListItem_OptionSelected" IsToggled="{Binding IsSelected, Mode=TwoWay}" 
+                                                            HorizontalOptions="End" VerticalOptions="Center" />                                             
                                                 </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
@@ -82,8 +77,22 @@
                             </Grid>
                         </common:GradientColorStack>
                     </DataTemplate>
-                </cards:CarouselView.ItemTemplate>
-            </cards:CarouselView>
+                </cards:CardsView.ItemTemplate>
+            </cards:CardsView>
+
+
+            <common:GradientColorStack Grid.Row="1" ColorsList="#B06AB3,#8CA6DB" Mode="ToBottom">
+                <Button 
+                HorizontalOptions="Center"
+                Text="Check Answer"
+                CommandParameter="{Binding CurrentPositionIndex}"
+                Command="{Binding NextQuestionCommand}"
+                TextColor="White"                    
+                FontAttributes="Bold"
+                FontSize="Medium"
+                BackgroundColor="Transparent" />
+            </common:GradientColorStack>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
