@@ -15,7 +15,7 @@ namespace MyTasks.TODO.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class SwipeCardsViewModel : FreshMvvm.FreshBasePageModel
     {
-        public string Title => "Swipe Cards View";
+        public string Title { get; set; } = "Swipe Cards View";
 
         public int CurrentPositionIndex { get; set; } = 0;
                 
@@ -40,11 +40,11 @@ namespace MyTasks.TODO.ViewModels
 
                 if (intersection.Count() != Cards[CurrentPositionIndex].Answers.Count)
                 {
-                    CoreMethods.DisplayAlert("Check", "Incorrect answers were chosen", "OK");
+                    CoreMethods.DisplayAlert("Incorrect", "Check your answers again!", "OK");
                 }
                 else
                 {
-                    CoreMethods.DisplayAlert("Check", "Correct answers were chosen", "OK");
+                    CoreMethods.DisplayAlert("Correct", "Looks great!", "OK");
                 }
                 
             });
@@ -68,6 +68,7 @@ namespace MyTasks.TODO.ViewModels
                         Cards.Add(new DeckItem() { Id = 0, QuestionText = "No Questions were found." });
                     }
 
+                    Title = deck.DeckTitle;
                     Cards = deck.DeckItems;
                 }
                 catch(Exception ex)

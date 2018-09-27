@@ -1,4 +1,5 @@
 ﻿{
+  "deckTitle":  "AWS - CSA - Security",
   "deckItems": [
     {
       "id": 1,
@@ -22,62 +23,59 @@
         }
       ],
       "isMultiOption": true,
-      "noOfOptions": 4,
-      "answers": [1]
+      "answers": [ 1 ]
+    },
+    {
+      "id": 2,
+      "questionText": "In the shared security model, AWS is responsible for which of the following security best practices ?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Penetration testing"
         },
         {
           "id": 2,
-          "questionText": "In the shared security model, AWS is responsible for which of the following security best practices ?",
-          "options": [
-            {
-              "id": 1,
-              "text": "Penetration testing"
-            },
-            {
-              "id": 2,
-              "text": "Operating system account security management"
-            },
-            {
-              "id": 3,
-              "text": "Threat modeling"
-            },
-            {
-              "id": 4, 
-              "text": "User group access management"
-            },
-            {
-              "id": 5,
-              "text": "Static code analysis"
-            }
-          ],
-          "isMultiOption": true,
-          "noOfOptions": 5,
-          "answers": [ 1, 3, 5 ]
+          "text": "Operating system account security management"
         },
         {
           "id": 3,
-          "questionText": "You are running a web-application on AWS consisting of the following components an Elastic Load Balancer (ELB) an Auto-Scaling Group of EC2 instances running Linux/PHP/Apache, and Relational DataBase Service (RDS) MySQL. Which security measures fall into AWS’s responsibility?",
-          "options": [
-            {
-              "id": 1,
-              "text": "Protect the EC2 instances against unsolicited access by enforcing the principle of least-privilege access"
-            },
-            {
-              "id": 2,
-              "text": "Protect against IP spoofing or packet sniffing"
-            },
-            {
-              "id": 3,
-              "text": "Assure all communication between EC2 instances and ELB is encrypted"
-            },
-            {
-              "id": 4,
-              "text": "Install latest security patches on ELB, RDS and EC2 instances"
-            }
-          ],
-          "isMultiOption": true,
-          "noOfOptions": 4,
-          "answers": [ 2 ]
+          "text": "Threat modeling"
+        },
+        {
+          "id": 4,
+          "text": "User group access management"
+        },
+        {
+          "id": 5,
+          "text": "Static code analysis"
         }
-      ]
+      ],
+      "isMultiOption": true,
+      "answers": [ 1, 3, 5 ]
+    },
+    {
+      "id": 3,
+      "questionText": "You are running a web-application on AWS consisting of the following components an Elastic Load Balancer (ELB) an Auto-Scaling Group of EC2 instances running Linux/PHP/Apache, and Relational DataBase Service (RDS) MySQL. Which security measures fall into AWS’s responsibility?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Protect the EC2 instances against unsolicited access by enforcing the principle of least-privilege access"
+        },
+        {
+          "id": 2,
+          "text": "Protect against IP spoofing or packet sniffing"
+        },
+        {
+          "id": 3,
+          "text": "Assure all communication between EC2 instances and ELB is encrypted"
+        },
+        {
+          "id": 4,
+          "text": "Install latest security patches on ELB, RDS and EC2 instances"
+        }
+      ],
+      "isMultiOption": true,
+      "answers": [ 2 ]
+    }
+  ]
 }

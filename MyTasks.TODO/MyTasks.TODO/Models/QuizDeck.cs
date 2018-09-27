@@ -7,6 +7,7 @@ namespace MyTasks.TODO.Models
 {
     public class QuizDeck
     {
+        public string DeckTitle { get; set; }
         public ObservableCollection<DeckItem> DeckItems { get; set; }
     }
 }
