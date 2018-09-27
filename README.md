@@ -24,7 +24,7 @@ This app uses the following NUGETS
 
 ### Resources
 
-* [Android Asset Studio](http://romannurik.github.io/AndroidAssetStudio/icons-launcher.htm)
+* [Android Asset Studio](https://romannurik.github.io/AndroidAssetStudio/)
 * [Lottie Animation Files](https://www.lottiefiles.com)
 
 ### Android Toolbar 
