@@ -1,4 +1,4 @@
-## Xamarin App with navigation drawer menu using FreshMVVM library - Screenshots 
+## Screenshots 
 | Navigation Drawer | Flip | Swipe Deck |
 | --- | --- | --- |
 | ![Slider Menu](Screenshots/Capture-2.PNG?raw=true "Slider menu") | ![Slider Menu](Screenshots/Capture-3.PNG?raw=true) | ![Slider Menu](Screenshots/Capture-1.PNG?raw=true) |
