@@ -1,4 +1,9 @@
-## Xamarin App with navigation drawer menu using FreshMVVM library
+## Xamarin App with navigation drawer menu using FreshMVVM library - Screenshots 
+| Navigation Drawer | Flip | Swipe Deck |
+| --- | --- | --- |
+| ![Slider Menu](Screenshots/Capture-2.PNG?raw=true "Slider menu") | ![Slider Menu](Screenshots/Capture-3.PNG?raw=true) | ![Slider Menu](Screenshots/Capture-1.PNG?raw=true) |
+
+## List of NUGETS used
 
 This app uses the following NUGETS
 
@@ -7,6 +12,7 @@ This app uses the following NUGETS
 * PropertyChanged.Fody
 * Com.Airbnb.Xamarin.Forms.Lottie
 * Fusillade
+* CardsView
 * Polly
 * FreshMvvm
 * ModernHttpClient-updated
@@ -15,10 +21,6 @@ This app uses the following NUGETS
 * Newtonsoft.Json
 * Xam.Plugin.Connectivity
 
-## Screenshots 
-| Navigation Drawer | Single Page |
-| --- | --- |
-| ![Slider Menu](Screenshots/Capture-1.PNG?raw=true "Slider menu") | ![Slider Menu](Screenshots/Capture-3.PNG?raw=true) |
 
 ### Resources
 
