@@ -59,13 +59,13 @@ OR
 #### Adding custom fonts in Android?
 
 ```xml
-        <StackLayout Padding="5">
-            <Label Text="USER NAME" FontFamily="IndieFlower.ttf#Regular" FontSize="Medium" TextColor="White" />
-            <Entry Text="{Binding Username}" WidthRequest="200"/>
-            <Label Text="PASSWORD" FontFamily="IndieFlower.ttf#Regular" FontSize="Medium" TextColor="White" />
-            <Entry Text="{Binding Password}" IsPassword="true" WidthRequest="200"/>
-            <Button Text="Login" FontFamily="IndieFlower.ttf#Regular" Command="{Binding LoginCommand}" />
-        </StackLayout>
+<StackLayout Padding="5">
+    <Label Text="USER NAME" FontFamily="IndieFlower.ttf#Regular" FontSize="Medium" TextColor="White" />
+    <Entry Text="{Binding Username}" WidthRequest="200"/>
+    <Label Text="PASSWORD" FontFamily="IndieFlower.ttf#Regular" FontSize="Medium" TextColor="White" />
+    <Entry Text="{Binding Password}" IsPassword="true" WidthRequest="200"/>
+    <Button Text="Login" FontFamily="IndieFlower.ttf#Regular" Command="{Binding LoginCommand}" />
+</StackLayout>
 ```
 
 ### Quick look at BaseViewModel
