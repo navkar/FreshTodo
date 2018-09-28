@@ -24,7 +24,7 @@ This app uses the following NUGETS
 
 ### Resources
 
-* [Android Asset Studio](https://romannurik.github.io/AndroidAssetStudio/)
+* [Android Asset Studio](https://romannurik.github.io/AndroidAssetStudio/index.html)
 * [Lottie Animation Files](https://www.lottiefiles.com)
 
 ### Android Toolbar 
